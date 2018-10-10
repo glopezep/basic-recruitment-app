@@ -7,6 +7,11 @@ def new_view(request):
     if request.method == 'POST':
         form = CandidateForm(request.POST)
 
+        if (form.is_valid()):
+            form.save()
+        else:
+            print(form)
+
         return
 
     form = CandidateForm()

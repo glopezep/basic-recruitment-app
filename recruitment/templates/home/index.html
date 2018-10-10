@@ -1,0 +1,37 @@
+{% extends 'base/base.html' %}
+
+{% block head_content %}
+  <style>
+    .home {
+      justify-content: center;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+  </style>
+{% endblock head_content %}
+
+{% block container %}
+  <div class="home">
+    <div class="row">
+      <div class="col-3 offset-2">
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">Candidatos</h5>
+            <p class="card-text">App para que los candidatos hagan su solicitud.</p>
+            <a href="{% url 'candidates:new_candidate' %}" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-3 offset-1">
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">Recursos Humanos</h5>
+            <p class="card-text">App para el area de Recursos Humanos.</p>
+            <a href="{% url 'rh:login' %}" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+{% endblock container %}

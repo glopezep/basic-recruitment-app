@@ -21,9 +21,15 @@ from django.conf import settings
 
 from django.conf.urls.static import static
 
+from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('candidates/', include('candidates.urls')),
-    path('rh/', include('human_resources.urls'))
+      path(
+        route='',
+        view=views.home,
+        name='home'
+    ),
+    path('candidates/', include(('candidates.urls', 'candidates'), namespace='candidates')),
+    path('rh/', include(('human_resources.urls', 'rh'), namespace='rh')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

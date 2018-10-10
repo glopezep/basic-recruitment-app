@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% block container %}
+<h1 style="margin-bottom: 50px">Lista de candidatos</h1>
+
+<ul class="list-group">
+  {% for candidato in candidatos %}
+  <li class="list-group-item">{{ candidato.nombre }}</li>
+  <li class="list-group-item" style="margin-bottom: 1em">
+    <ul class="list-group">
+      <li class="list-group-item">
+        <strong>Cedula: </strong>
+        {{ candidato.cedula }}
+      </li>
+      <li class="list-group-item">
+        <strong>Puesto que aspira: </strong>
+        {{ candidato.puesto }}
+      </li>
+      <li class="list-group-item">
+        <strong>Departamento: </strong>
+        {{ candidato.departamento }}
+      </li>
+      <li class="list-group-item">
+        <strong>Salario que aspira: </strong>
+        RD${{ candidato.salario_aspira }}
+      </li>
+      <li class="list-group-item">
+        <strong>Competencias: </strong>
+        <ul class="">
+          {% for competencia in candidato.competencias.all %}
+          <li class="">
+            {{ competencia.description }}
+          </li>
+          {% endfor %}
+        </ul>
+      </li>
+      <li class="list-group-item">
+        <strong>Capacitaciones: </strong>
+        <ul class="">
+          {% for capacitacion in candidato.capacitaciones.all %}
+          <li class="">
+            <span class="">
+              {{ capacitacion.descripcion }} |
+            </span>
+            <span class="">
+              {{ capacitacion.nivel }} |
+            </span>
+            <span class="">
+              {{ capacitacion.fecha_desde }} |
+            </span>
+            <span class="">
+              {{ capacitacion.fecha_hasta }} |
+            </span>
+            <span class="">
+              {{ capacitacion.institucion }}
+            </span>
+          </li>
+          {% endfor %}
+        </ul>
+      </li>
+      <li class="list-group-item">
+        <strong>Experiencias: </strong>
+        <ul class="">
+          {% for experiencia in candidato.experiencias.all %}
+          <li class="">
+            {{ experiencia.empresa }}
+          </li>
+          <li class="">
+            {{ experiencia.fecha_desde }}
+          </li>
+          <li class="">
+            {{ experiencia.fecha_hasta }}
+          </li>
+          <li class="">
+            RD${{ experiencia.salario }}
+          </li>
+          {% endfor %}
+        </ul>
+      </li>
+      <li class="list-group-item">
+        <strong>Recomendado por: </strong>
+        {{ candidato.recomendado_por }}
+      </li>
+    </ul>
+  </li>
+  {% endfor %}
+</ul>
+
+
+{% endblock container %}
