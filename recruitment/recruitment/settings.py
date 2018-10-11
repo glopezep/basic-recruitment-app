@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'human_resources',
     'candidates',
       # third party apps
-    'crispy_forms',
+    'xhtml2pdf',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

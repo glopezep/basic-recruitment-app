@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block container %}
+  <h1 style="margin-bottom: 50px">Login</h1>
+  {% if error %}
+    <div class="alert alert-danger" role="alert">
+      {{ error }}
+    </div>
+  {% endif %}
+  <form action="{% url 'candidates:login' %}" method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="exampleInputEmail1">Cedula</label>
+      <input name="cedula" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Cedula">
+    </div>
+    <button type="submit" class="btn btn-success">Login</button>
+  </form>
+{% endblock container %}

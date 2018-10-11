@@ -1,12 +1,24 @@
 {% extends 'base.html' %}
 
 {% block container %}
+<a href="{% url 'rh:report' %}" target="_blank" class="btn btn-primary">Generar reporte</a>
+
 <h1 style="margin-bottom: 50px">Lista de candidatos</h1>
 
 <ul class="list-group">
   {% for candidato in candidatos %}
-  <li class="list-group-item">{{ candidato.nombre }}</li>
-  <li class="list-group-item" style="margin-bottom: 1em">
+  <li class="list-group-item">
+    <strong>{{ candidato.nombre }}</strong>
+    {% if is_report != True %}
+      {% if candidato.esta_reclutado %}
+        <a style="float:right">Esta reclutado</a>
+      {% else %}
+        <a href="{% url 'rh:reclutar' id=candidato.id %}" style="float:right">Reclutar</a>
+      {% endif %}
+    {% endif %}
+
+  </li>
+  <li class="list-group-item" style="margin-bottom: 3em">
     <ul class="list-group">
       <li class="list-group-item">
         <strong>Cedula: </strong>

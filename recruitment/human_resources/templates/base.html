@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     {% block head_content %}{% endblock %}
@@ -8,10 +9,25 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" crossorigin="anonymous" />
     <link rel="stylesheet" href="{% static 'css/main.css' %}" />
 </head>
+
 <body>
-    <div class="container">
+    {% if is_report != True %}
+        <nav class="navbar fixed-top navbar-light bg-light">
+            <a class="navbar-brand">Hi {{ user }}</a>
+            {% if user.first_name %}
+                <a class="" href="/admin">Admin Site</a>
+                <a class="" href="{% url 'rh:logout' %}">Logout</a>
+            {% else %}
+                <a class="" href="{% url 'home' %}">Go home</a>
+            {% endif %}
+        </nav>
+    {% endif %}
+
+
+    <div class="container" style="margin-top: 5em">
         {% block container %}
         {% endblock%}
     </div>
 </body>
+
 </html>

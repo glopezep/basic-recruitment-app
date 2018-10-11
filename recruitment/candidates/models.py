@@ -32,7 +32,8 @@ class Candidato(models.Model):
   competencias = models.ManyToManyField(Competencia, blank=True)
   capacitaciones = models.ManyToManyField(Capacitacion, blank=True)
   experiencias = models.ManyToManyField(Experiencia, blank=True)
-  recomendado_por = models.ForeignKey(Empleado,  on_delete=models.CASCADE)
+  recomendado_por = models.ForeignKey(Empleado,  on_delete=models.CASCADE, null=True, blank=True)
+  esta_reclutado = models.BooleanField(null=True, blank=True, default=False)
 
   def __str__(self):
     return self.nombre

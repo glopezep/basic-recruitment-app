@@ -63,11 +63,11 @@ class Empleado(models.Model):
   user = models.OneToOneField(User, on_delete=models.CASCADE, blank=True, null=True)
   cedula = models.CharField(max_length=11, validators=[validar_cedula])
   nombre = models.CharField(max_length=100)
-  fecha_ingreso = models.DateField()
+  fecha_ingreso = models.DateField(auto_now=True, null=True, blank=True)
   departamento = models.CharField(max_length=100)
-  puesto = models.ForeignKey('Puesto',  on_delete=models.CASCADE)
-  salario_mensual = models.IntegerField()
-  estado = models.BooleanField(default=True)
+  puesto = models.ForeignKey('Puesto',  on_delete=models.CASCADE, null=True, blank=True)
+  salario_mensual = models.IntegerField(blank=True, null=True)
+  estado = models.BooleanField(default=True, null=True, blank=True)
 
   def __str__(self):
     return self.nombre
